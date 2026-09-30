@@ -342,6 +342,10 @@ class UsuarioScreen(Screen):
         self.manager.current = 'Recomendaciones'
  
     def cerrar_sesion(self, instance):
+        login_screen = self.manager.get_screen('login')
+        login_screen.usuario.text = ''
+        login_screen.clave.text = ''
+
         self.manager.transition.direction = 'right'
         self.manager.current = 'bienvenida'
  
