@@ -398,19 +398,19 @@ class EquipoScreen(Screen):
 
         integrantes = [
             {
-                "nombre": "Nombre del integrante 1",
-                "rol": "Desarrollador/a"
+                "nombre": "Alejandra Aviles",
+                "rol": "Desarrolladora"
             },
             {
-                "nombre": "Nombre del integrante 2",
-                "rol": "Diseñador/a"
+                "nombre": "Lucía García",
+                "rol": "Diseñadora"
             },
             {
-                "nombre": "Nombre del integrante 3",
-                "rol": "Desarrollador/a"
+                "nombre": "Gabriel Ortega",
+                "rol": "Desarrollador"
             },
             {
-                "nombre": "Nombre del integrante 4",
+                "nombre": "Yusseli Melara",
                 "rol": "Documentación"
             }
         ]
