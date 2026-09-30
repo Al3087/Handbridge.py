@@ -901,16 +901,16 @@ class VisitadeasilosScreen(Screen):
             {
                 "titulo": "Hogar de Ancianos Santa Tecla ",
                 "descripciones": [
-                    "Dia: Sabado, 12 de Julio del 2025",
+                    "Dia: Domingo, 6 de Octubre del 2026",
                     "Hora: 9 am",
-                    "Participa con tan solo: $5 USD"
+                    "Participa con tan solo: $6 USD"
                 ],
                 "imagen": "asilos1.png"
             },
             {
                 "titulo": "Hogar de Ancianos San Vicente de Paul ",
                 "descripciones": [
-                    "Dia: Sabado, 23 de Agosto del 2025",
+                    "Dia: Sabado, 23 de Septiembre del 2026",
                     "Hora: 8 am",
                     "Participa con tan solo: $2.50 USD"
                 ],
@@ -919,7 +919,7 @@ class VisitadeasilosScreen(Screen):
             {
                 "titulo": "Visita FUSATE",
                 "descripciones": [
-                    "Día:  Sabado, 20 de Septiembre del 2025",
+                    "Día:  Sabado, 30 de Octubre del 2026",
                     "Hora: 8 am",
                     "Participa con tan solo: $5 USD"
                 ],
