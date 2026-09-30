@@ -344,7 +344,152 @@ class UsuarioScreen(Screen):
     def cerrar_sesion(self, instance):
         self.manager.transition.direction = 'right'
         self.manager.current = 'bienvenida'
- 
+# Screen "Integrantes del equipo"
+class EquipoScreen(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+        # Fondo
+        with self.canvas.before:
+            Color(*backgroundColor)
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+
+        self.bind(size=self.actualizar_rect, pos=self.actualizar_rect)
+
+        # Layout principal
+        main_layout = BoxLayout(
+            orientation='vertical',
+            padding=30,
+            spacing=15
+        )
+
+        # Título
+        titulo = Label(
+            text="INTEGRANTES DEL EQUIPO",
+            font_size=24,
+            size_hint=(1, 0.15),
+            color=ColorWhite,
+            bold=True
+        )
+
+        main_layout.add_widget(titulo)
+
+        # ScrollView por si hay muchos integrantes
+        scroll = ScrollView(
+            do_scroll_x=False,
+            do_scroll_y=True
+        )
+
+        integrantes_layout = BoxLayout(
+            orientation='vertical',
+            spacing=15,
+            padding=10,
+            size_hint_y=None
+        )
+
+        integrantes_layout.bind(
+            minimum_height=integrantes_layout.setter('height')
+        )
+
+        # ==========================================
+        # INTEGRANTES
+        # Cambia estos nombres por los de tu equipo
+        # ==========================================
+
+        integrantes = [
+            {
+                "nombre": "Nombre del integrante 1",
+                "rol": "Desarrollador/a"
+            },
+            {
+                "nombre": "Nombre del integrante 2",
+                "rol": "Diseñador/a"
+            },
+            {
+                "nombre": "Nombre del integrante 3",
+                "rol": "Desarrollador/a"
+            },
+            {
+                "nombre": "Nombre del integrante 4",
+                "rol": "Documentación"
+            }
+        ]
+
+        for integrante in integrantes:
+
+            tarjeta = BoxLayout(
+                orientation='vertical',
+                size_hint_y=None,
+                height=100,
+                padding=15,
+                spacing=5
+            )
+
+            # Fondo de la tarjeta
+            with tarjeta.canvas.before:
+                Color(1, 1, 1, 1)
+                tarjeta.rect = RoundedRectangle(
+                    size=tarjeta.size,
+                    pos=tarjeta.pos,
+                    radius=[15]
+                )
+
+            tarjeta.bind(
+                size=lambda instance, value, t=tarjeta:
+                setattr(t.rect, 'size', value)
+            )
+
+            tarjeta.bind(
+                pos=lambda instance, value, t=tarjeta:
+                setattr(t.rect, 'pos', value)
+            )
+
+            nombre = Label(
+                text=f"[b]{integrante['nombre']}[/b]",
+                markup=True,
+                font_size=19,
+                color=Colorblack,
+                size_hint_y=0.55
+            )
+
+            rol = Label(
+                text=integrante["rol"],
+                font_size=15,
+                color=azul_gris,
+                size_hint_y=0.45
+            )
+
+            tarjeta.add_widget(nombre)
+            tarjeta.add_widget(rol)
+
+            integrantes_layout.add_widget(tarjeta)
+
+        scroll.add_widget(integrantes_layout)
+        main_layout.add_widget(scroll)
+
+        # Botón volver
+        btn_volver = Button(
+            text="Volver",
+            size_hint=(1, 0.12),
+            font_size=17,
+            color=ColorWhite
+        )
+
+        redondear_boton(btn_volver, azul_gris)
+        btn_volver.bind(on_press=self.volver)
+
+        main_layout.add_widget(btn_volver)
+
+        self.add_widget(main_layout)
+
+    def volver(self, instance):
+        self.manager.transition.direction = 'right'
+        self.manager.current = 'usuario'
+
+    def actualizar_rect(self, *args):
+        self.rect.size = self.size
+        self.rect.pos = self.rect.pos
+
 class LimpiezaScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1597,6 +1742,7 @@ class LoginApp(App):
         sm.add_widget(BienvenidaScreen(name='bienvenida'))
         sm.add_widget(LoginScreen(name='login'))
         sm.add_widget(UsuarioScreen(name='usuario'))
+        sm.add_widget(EquipoScreen(name='equipo'))
         sm.add_widget(RegistrarScreen(name='registrar'))
         sm.add_widget(LimpiezaScreen(name='limpieza'))
         sm.add_widget(HogardeniñosScreen(name='Hogardeniños'))
