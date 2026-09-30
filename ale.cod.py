@@ -37,7 +37,7 @@ Config.set('graphics', 'height', '640')
  
  #Users
 usuarios = {
-    "raquel": "2008",
+    "Alejandra Aviles": "Al3095",
     "superate": "adoc"
 }
  
