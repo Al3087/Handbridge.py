@@ -319,7 +319,7 @@ class UsuarioScreen(Screen):
         self.rect.pos = self.pos
  
     def on_usuario(self, instance, value):
-        self.saludo.text = "TIPOS DE VOLUNTARIADOS"
+        self.saludo.text = f"¡Bienvenido, {value}!"
  
     def ir_limpieza(self, instance):
         self.manager.transition.direction = 'left'
